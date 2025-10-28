@@ -1,0 +1,163 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+<meta charset="UTF-8" />  
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+<title>My Static Website</title>  
+<link rel="stylesheet" href="style.css" />  
+</head>  
+<body>  
+<header>  
+<h1>Welcome to My Static Website</h1> 
+<ul>  
+<li><a href="#">Home</a></li>  
+<li><a href="#">About</a></li>  
+<li><a href="#">Contact</a></li>  
+</ul>  
+</nav>  
+</header>  
+<main>  
+<section>  
+<h2>Hello, Dear Students!</h2>  
+<p>This is a sample static website built using HTML, CSS, and JavaScript.</p>  
+<button onclick="showMessage()">Click Me</button>  
+<p id="message"></p>  
+<h3>Subscribe to our Newsletter</h3>  
+<input type="text" id="email" placeholder="Enter your email" />  
+<button onclick="validateEmail()">Submit</button>  
+</section>  
+</main>  
+<footer>  
+<p>FULL STACK JAVA PROGRAMS</p>  
+<p</p>  
+</footer>  
+<script src="script.js"></script>  
+</body>  
+</html>  
+2) script.js  
+function 
+showMessage() 
+{ 
+const 
+message 
+= 
+document.getElementById("message"); message.textContent = 
+"Thank you for clicking! Enjoy browsing ";  
+}  
+function 
+validateEmail() 
+{ 
+const 
+emailInput 
+= 
+document.getElementById("email"); const email = 
+emailInput.value;  
+if (email.indexOf("@") === -1 || email.indexOf(".") === -1) { 
+alert("Invalid email address. Please include '@' and '.' characters."); 
+emailInput.focus(); return false;  
+} 
+alert("Email 
+valid!"); return true;  
+}  
+is 
+3) style.css body { font-family: 
+Arial, sans-serif; margin: 0; 
+padding: 0; background-color: 
+#f9f9f9; color: #333;  
+}  
+header { background-color: 
+#007acc; 
+color: 
+white; 
+padding: 20px; text-align: 
+center;  
+}  
+nav ul { list-style: none; 
+padding: 0; display: 
+flex; 
+center; 
+10px;  
+}  
+justify-content: 
+margin-top: 
+nav li { margin: 0 
+15px;  
+}  
+nav a { color: white; 
+text-decoration: none; 
+font-weight: bold;  
+}  
+main { padding: 
+20px; text-align: 
+center;  
+}  
+button { padding: 10px 
+20px; 
+16px; 
+pointer;  
+}  
+footer {  
+font-size: 
+cursor: 
+background-color: #eee; 
+text-align: 
+center; 
+padding: 15px; margin
+top: 40px;  
+}  
+
+
+
+
+function calculateSubtotal(quantity, pricePerDonut) {
+    let numberOfDonuts;
+
+    if (typeof quantity === "string" && quantity.toLowerCase() === "dozen") {
+        numberOfDonuts = 12;
+    } else {
+        numberOfDonuts = Number(quantity); // convert to number if not "dozen"
+    }
+
+    let subtotal = numberOfDonuts * pricePerDonut;
+    return subtotal;
+}
+
+// Example calls:
+console.log(calculateSubtotal("dozen", 15)); // Output: 180
+console.log(calculateSubtotal(8, 15));       // Output: 120
+
+
+
+
+
+
+function areAnagrams(str1, str2) {
+    // If the lengths are not equal, they can't be anagrams
+    if (str1.length !== str2.length) {
+        return false;
+    }
+
+    // Helper function to build a frequency map of characters
+    function buildCharFrequency(str) {
+        const freq = {};
+        for (let char of str) {
+            freq[char] = (freq[char] || 0) + 1;
+        }
+        return freq;
+    }
+
+    const freq1 = buildCharFrequency(str1);
+    const freq2 = buildCharFrequency(str2);
+
+    // Compare the frequency maps
+    for (let char in freq1) {
+        if (freq1[char] !== freq2[char]) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+console.log(areAnagrams("listen", "silent")); // true
+console.log(areAnagrams("hello", "world"));   // false
