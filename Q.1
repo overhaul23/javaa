@@ -1,0 +1,141 @@
+ Implement method overloading and constructor overloading in Java.
+import java.util.Scanner;
+
+class Student {
+    int Rollno;
+    String Name;
+    double Percentage;
+
+    void getDetails() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Rollno: ");
+        Rollno = sc.nextInt();
+
+        System.out.print("Enter Name: ");
+        Name = sc.next();
+
+        System.out.print("Enter Percentage: ");
+        Percentage = sc.nextDouble();
+    }
+
+    void displayDetails() {
+        System.out.println("\n--- Student Details ---");
+        System.out.println("Rollno: " + Rollno);
+        System.out.println("Name: " + Name);
+        System.out.println("Percentage: " + Percentage + "%");
+    }
+}
+
+class StudentDemo {
+    public static void main(String args[]) {
+        Student s1 = new Student();
+        System.out.println("Student Object created");
+
+        s1.getDetails();
+        System.out.println("Student details taken");
+
+        s1.displayDetails();
+        System.out.println("Student class output displayed");
+    }
+}
+
+
+
+exercise 1
+import java.util.Scanner;
+
+class Student {
+    Scanner sc = new Scanner(System.in);
+    int ID, creditHours, pointsEarned;
+    double gpa;
+
+    void inputDetails() {
+        System.out.print("Enter ID number: ");
+        ID = sc.nextInt();
+
+        System.out.print("Enter credit hours: ");
+        creditHours = sc.nextInt();
+
+        System.out.print("Enter points earned: ");
+        pointsEarned = sc.nextInt();
+    }
+
+    void calculateGpa() {
+        if (creditHours != 0) {
+            gpa = (double) pointsEarned / creditHours;
+        } else {
+            gpa = 0.0;
+        }
+    }
+
+    void display() {
+        System.out.println("The Grade Point Average of Student is: " + gpa);
+        System.out.println("This program was written by: Aadesh");
+    }
+}
+
+class ShowStudent {
+    public static void main(String[] args) {
+        Student S1 = new Student();
+        S1.inputDetails();
+        S1.calculateGpa();
+        S1.display();
+    }
+}
+
+
+
+
+
+
+exercise 2
+import java.util.Scanner;
+
+class BankAccount {
+    Scanner sc = new Scanner(System.in);
+    String name, type, accNo;
+    int balanceAmt;
+
+    void getDetails() {
+        System.out.print("Enter the name of Depositor: ");
+        name = sc.next();
+
+        System.out.print("Enter the Account number: ");
+        accNo = sc.next();
+
+        System.out.print("Enter the Type of Account: ");
+        type = sc.next();
+
+        System.out.print("Enter the balance amount in the account: ");
+        balanceAmt = sc.nextInt();
+    }
+
+    void deposit() {
+        System.out.print("Enter the amount to be deposited: ");
+        int depositAmt = sc.nextInt();
+        balanceAmt = balanceAmt + depositAmt;
+        System.out.println("After Depositing, the amount is: " + balanceAmt);
+    }
+
+    void withdraw() {
+        System.out.print("Enter the amount to be withdrawn: ");
+        int withdrawAmt = sc.nextInt();
+        balanceAmt = balanceAmt - withdrawAmt;
+        System.out.println("After Withdrawing, the amount is: " + balanceAmt);
+    }
+
+    void displayMyName() {
+        System.out.println("\nMy Name is Aadesh");
+    }
+}
+
+class BankDetails {
+    public static void main(String[] args) {
+        BankAccount W1 = new BankAccount();
+        W1.getDetails();
+        W1.deposit();
+        W1.withdraw();
+        W1.displayMyName();
+    }
+}
+
