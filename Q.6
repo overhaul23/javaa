@@ -1,0 +1,83 @@
+JSP
+<html>
+<head>
+<title> First Program </title>
+</head>
+<body>
+<h1> Output of JSP file </h1>
+<%
+out.println("Hello AADESH");
+%>
+<body>
+<html>
+
+date and time
+<%@ page import="java. util.Date" %>
+<html>
+<head>
+<title>Display Current Date and Time</title>
+</head>
+<body>
+<h1>Current Date and Time</h1>
+<%
+Date currentDate = new Date();
+out.println("<h2>" + currentDate.tostring() + "</h2>");
+%>
+</body>
+</html>
+
+
+
+user details
+<! DOCTYPE html>
+<html>
+<head>
+<title>User Details Form</title>
+</head>
+<body>
+<h1>Enter Your Details</h1>
+<form action="processForm.jsp" method="post">
+<Label>Name: </Label>
+<input type="text" name="username" required><br><br>
+<Label>Birth Date :< /Label>
+<input type="date" name="birthdate" required><br><br>
+<Label>Email :< /Label>
+<input type="email" name="email" required><br><br>
+<Label>Lucky Number :< /Label>
+<input type="number" name="luckyNumber" required><br><br>
+<input type="submit" value="Submit">
+</form>
+</body>
+</html>
+
+
+<%@ page import="java. io., java.util." %>
+<html>
+<head>
+<title>Processed User Details</title>
+</head>
+<body>
+<h1>User Details Submitted</h1>
+<%
+// Retrieving form values using request.getParameter()
+String name = request.getParameter("username");
+String birthdate = request.getParameter("birthdate");
+String email = request.getParameter("email");
+String luckyNumStr = request.getParameter("LuckyNumber");
+// Convert Lucky number from String to int
+int luckyNumber = 0;
+try {
+LuckyNumber = Integer.parseInt(LuckyNumStr);
+} catch (NumberFormatException e) {
+out.println("<p style='color:red;'>Invalid lucky number entered !< /p>");
+
+%>
+<h2>Collected Information :< /h2>
+<table border="1" cellpadding="10">
+<tr><th>Name</th><td><%= name %></td></tr>
+<tr><th>Birth Date</th><td> <= birthdate %></td></tr>
+<tr><th>Email</th><td> <= email %></td></tr>
+<tr><th>Lucky Number</th><td><%= LuckyNumber %></td></tr>
+</table>
+</body>
+</html>
