@@ -1,0 +1,210 @@
+ Implement method overloading and constructor overloading in Java.
+public class Employee {
+    String name;
+    int id;
+    double salary;
+
+    // Default constructor
+    Employee() {
+        name = "Unknown";
+        id = 0;
+        salary = 0.0;
+    }
+
+    // Constructor with name and id
+    Employee(String n, int i) {
+        name = n;
+        id = i;
+        salary = 25000; // default salary
+    }
+
+    // Constructor with name, id, and salary
+    Employee(String n, int i, double s) {
+        name = n;
+        id = i;
+        salary = s;
+    }
+
+    // Display employee details
+    void display() {
+        System.out.println("Employee Name: " + name + 
+                           " | ID: " + id + 
+                           " | Salary: " + salary);
+    }
+
+    public static void main(String[] args) {
+        Employee e1 = new Employee();
+        Employee e2 = new Employee("Aadesh", 25);
+        Employee e3 = new Employee("John", 27, 55000);
+        Employee e4 = e2; // reference copy
+
+        e1.display();
+        e2.display();
+        e3.display();
+        e4.display();
+    }
+}
+
+
+
+
+
+AREA
+public class OverloadDemo {
+
+    // Area of a square
+    void area(int side) {
+        System.out.println("Area of square: " + (side * side));
+    }
+
+    // Area of a rectangle
+    int area(int l, int b) {
+        return (l * b);
+    }
+
+    // Area of a rectangle (int and double)
+    double area(int l, double b) {
+        return (l * b);
+    }
+
+    // Area of a rectangle (double and int)
+    double area(double l, int b) {
+        return (l * b);
+    }
+
+    // Area of a triangle using Heron’s formula
+    double area(int a, int b, int c) {
+        double s = (a + b + c) / 2.0;
+        return Math.sqrt(s * (s - a) * (s - b) * (s - c));
+    }
+
+    // Main method
+    public static void main(String[] args) {
+        OverloadDemo d = new OverloadDemo();
+
+        d.area(3); // square
+        int x = d.area(3, 4); // rectangle (int, int)
+        System.out.println("Area is: " + x);
+
+        System.out.println("Area is: " + d.area(3, 4, 5));  // triangle
+        System.out.println("Area is: " + d.area(2, 3.5));   // rectangle (int, double)
+        System.out.println("Area is: " + d.area(3.5, 2));   // rectangle (double, int)
+    }
+}
+
+
+
+
+
+
+exercise 1
+public class Student {
+    private int idNumber;
+    private int creditHours;
+    private int pointsEarned;
+    private double gradePointAverage;
+    private String studentName = "Aadesh";
+
+    // Default constructor
+    public Student() {
+        this.idNumber = 9999;
+        this.pointsEarned = 12;
+        this.creditHours = 3;
+        computeGradePointAverage();
+    }
+
+    // Parameterized constructor
+    public Student(int id, int credits, int points) {
+        this.idNumber = id;
+        this.creditHours = credits;
+        this.pointsEarned = points;
+        computeGradePointAverage();
+    }
+
+    // Copy constructor
+    public Student(Student other) {
+        this.idNumber = other.idNumber;
+        this.creditHours = other.creditHours;
+        this.pointsEarned = other.pointsEarned;
+        this.gradePointAverage = other.gradePointAverage;
+        this.studentName = other.studentName;
+    }
+
+    // Method to compute GPA
+    private void computeGradePointAverage() {
+        if (creditHours != 0) {
+            gradePointAverage = (double) pointsEarned / creditHours;
+        } else {
+            gradePointAverage = 0.0;
+        }
+    }
+
+    // Display method
+    public void display() {
+        System.out.println("My name is " + studentName);
+        System.out.println("ID Number: " + idNumber);
+        System.out.println("Credit Hours Earned: " + creditHours);
+        System.out.println("Points Earned: " + pointsEarned);
+        System.out.println("Grade Point Average: " + gradePointAverage);
+    }
+}
+
+// Second class with main()
+public class ShowStudent2 {
+    public static void main(String[] args) {
+        Student student1 = new Student();
+        student1.display();
+        System.out.println();
+
+        Student student2 = new Student(1234, 15, 45);
+        student2.display();
+        System.out.println();
+
+        Student student3 = new Student(student2);
+        student3.display();
+    }
+}
+
+
+
+
+
+
+exercise 2
+public class Billing {
+
+    // Method 1: One item, with 8% tax
+    public double computeBill(double price) {
+        double total = price + (price * 0.08);
+        return total;
+    }
+
+    // Method 2: Multiple quantities, with 8% tax
+    public double computeBill(double price, int quantity) {
+        double total = (price * quantity) + (price * quantity * 0.08);
+        return total;
+    }
+
+    // Method 3: Multiple quantities with coupon discount, with 8% tax
+    public double computeBill(double price, int quantity, double coupon) {
+        double total = (price * quantity) - coupon;
+        total = total + (total * 0.08);
+        return total;
+    }
+
+    // Main method
+    public static void main(String[] args) {
+        Billing billing = new Billing();
+
+        System.out.println("My name is Aadesh\n");
+
+        double bill1 = billing.computeBill(20.0);
+        double bill2 = billing.computeBill(20.0, 3);
+        double bill3 = billing.computeBill(20.0, 3, 10.0);
+
+        System.out.println("Total bill (1 item): " + bill1);
+        System.out.println("Total bill (3 items): " + bill2);
+        System.out.println("Total bill (3 items, with coupon): " + bill3);
+    }
+}
+
