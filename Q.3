@@ -1,0 +1,184 @@
+class Person {
+    String name;
+    int id;
+
+    Person(String name, int id) {
+        this.name = name;
+        this.id = id;
+        System.out.println("Person constructor called.");
+    }
+
+    void displayDetails() {
+        System.out.println("Name: " + name);
+        System.out.println("ID: " + id);
+    }
+}
+
+class Employee extends Person {
+    double salary;
+
+    Employee(String name, int id, double salary) {
+        super(name, id); // call parent constructor
+        this.salary = salary;
+        System.out.println("Employee constructor called.");
+    }
+
+    void displayDetails() {
+        super.displayDetails(); // call parent method
+        System.out.println("Salary: " + salary);
+    }
+}
+
+public class InheritanceWithSuperDemo {
+    public static void main(String[] args) {
+        Employee emp = new Employee("Aadesh", 191, 59900.0);
+        emp.displayDetails();
+    }
+}
+
+
+
+
+
+zero division error
+public class InbuiltExceptionDemo {
+    public static void main(String[] args) {
+        int a = 10;
+        int b = 0;
+
+        try {
+            int result = a / b; // This will throw ArithmeticException
+            System.out.println("Result: " + result);
+        } catch (ArithmeticException e) {
+            System.out.println("Exception caught: " + e);
+        }
+
+        System.out.println("Program continues...");
+    }
+}
+
+
+
+
+
+age exception
+// Custom Exception Class
+class InvalidAgeException extends Exception {
+    InvalidAgeException(String message) {
+        super(message);
+    }
+}
+
+// Main Class
+public class CustomExceptionDemo {
+
+    static void checkAge(int age) throws InvalidAgeException {
+        if (age < 18)
+            throw new InvalidAgeException("Age must be at least 18.");
+        else
+            System.out.println("Valid age for registration.");
+    }
+
+    public static void main(String[] args) {
+        try {
+            checkAge(16); // this will throw the exception
+        } catch (InvalidAgeException e) {
+            System.out.println("Caught Exception: " + e.getMessage());
+        }
+
+        System.out.println("Program continues...");
+    }
+}
+
+
+
+
+
+poem inheritance
+// Base class
+public class Poem {
+    private String title;
+    private int lines;
+
+    public Poem(String title, int lines) {
+        this.title = title;
+        this.lines = lines;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public int getLines() {
+        return lines;
+    }
+}
+
+// Subclass 1
+class Couplet extends Poem {
+    public Couplet(String title) {
+        super(title, 2);
+    }
+}
+
+// Subclass 2
+class Limerick extends Poem {
+    public Limerick(String title) {
+        super(title, 5);
+    }
+}
+
+// Subclass 3
+class Haiku extends Poem {
+    public Haiku(String title) {
+        super(title, 3);
+    }
+}
+
+// Main class
+class DemoPoems {
+    public static void main(String[] args) {
+        Couplet couplet = new Couplet("Love's Whisper");
+        Limerick limerick = new Limerick("Silly Old Man");
+        Haiku haiku = new Haiku("Autumn Leaves");
+
+        displayPoem(couplet);
+        displayPoem(limerick);
+        displayPoem(haiku);
+    }
+
+    public static void displayPoem(Poem poem) {
+        System.out.println("Poem Title: " + poem.getTitle());
+        System.out.println("Number of Lines: " + poem.getLines());
+        System.out.println();
+    }
+}
+
+
+
+
+exercise 2
+class Base {
+    public Base() throws Exception {
+        System.out.println("Inside Base constructor");
+        throw new Exception("Exception in Base class constructor");
+    }
+}
+
+class Derived extends Base {
+    public Derived() throws Exception {
+        // super() is automatically called here
+        System.out.println("Inside Derived constructor");
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        try {
+            Derived d = new Derived();
+        } catch (Exception e) {
+            System.out.println("Caught in main: " + e.getMessage());
+        }
+    }
+}
+
